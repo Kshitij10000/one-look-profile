@@ -3,28 +3,46 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useAuth } from '@/context/AuthContext';
 import AppShell from '@/components/AppShell';
 
 export default function Register() {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [fullName, setFullName] = useState('');
     const [role, setRole] = useState('applicant');
     const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const { signUp } = useAuth();
     const router = useRouter();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError('');
+        setSuccess('');
         setIsLoading(true);
 
         try {
-            // Mock registration - just simulate success
-            await new Promise(resolve => setTimeout(resolve, 500));
+            if (password.length < 6) {
+                throw new Error('Password must be at least 6 characters');
+            }
 
-            // In a real app, this would save to database
-            // For demo, just redirect to login
-            router.push('/login');
+            const { error: signUpError } = await signUp(
+                email.trim(),
+                password,
+                role,
+                fullName.trim()
+            );
+
+            if (signUpError) {
+                throw new Error(signUpError.message || 'Registration failed');
+            }
+
+            setSuccess('Account created successfully! Redirecting to login...');
+            setTimeout(() => {
+                router.push('/login');
+            }, 2000);
         } catch (err: any) {
             setError(err.message);
         } finally {
@@ -47,27 +65,41 @@ export default function Register() {
                         </div>
                     )}
 
-                    <div style={{
-                        background: 'rgba(100, 108, 255, 0.1)',
-                        padding: '1rem',
-                        borderRadius: '8px',
-                        marginBottom: '1rem',
-                        fontSize: '0.85rem',
-                        border: '1px solid rgba(100, 108, 255, 0.2)'
-                    }}>
-                        <strong>Note:</strong> This is a demo. Registration will redirect you to login. Use the demo credentials to sign in.
-                    </div>
+                    {success && (
+                        <div style={{
+                            background: 'rgba(34, 197, 94, 0.1)',
+                            padding: '1rem',
+                            borderRadius: '8px',
+                            marginBottom: '1rem',
+                            fontSize: '0.85rem',
+                            border: '1px solid rgba(34, 197, 94, 0.3)',
+                            color: '#22c55e'
+                        }}>
+                            ✓ {success}
+                        </div>
+                    )}
 
                     <form onSubmit={handleSubmit} className="auth-form">
                         <div className="form-group">
-                            <label>Username</label>
+                            <label>Full Name</label>
                             <input
                                 type="text"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
+                                value={fullName}
+                                onChange={(e) => setFullName(e.target.value)}
                                 required
                                 className="form-input"
-                                placeholder="Choose a username"
+                                placeholder="Enter your full name"
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>Email</label>
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                                className="form-input"
+                                placeholder="Enter your email"
                             />
                         </div>
                         <div className="form-group">
@@ -77,8 +109,9 @@ export default function Register() {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
+                                minLength={6}
                                 className="form-input"
-                                placeholder="Create a password"
+                                placeholder="Create a password (min 6 characters)"
                             />
                         </div>
                         <div className="form-group">

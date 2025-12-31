@@ -10,7 +10,8 @@
       "Bash(npm install:*)",
       "Bash(mkdir:*)",
       "Bash(ls:*)",
-      "Bash(npm uninstall:*)"
+      "Bash(npm uninstall:*)",
+      "Bash(test:*)"
     ]
   }
 }

@@ -4,15 +4,14 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
-import { mockUsers } from '@/lib/mockData';
 import AppShell from '@/components/AppShell';
 
 export default function Login() {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    const { login } = useAuth();
+    const { signIn } = useAuth();
     const router = useRouter();
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -21,35 +20,11 @@ export default function Login() {
         setIsLoading(true);
 
         try {
-            // Mock authentication - check against hardcoded users
-            // Trim whitespace from inputs
-            const trimmedUsername = username.trim();
-            const trimmedPassword = password.trim();
+            const { error: signInError } = await signIn(email.trim(), password);
 
-            console.log('Login attempt:', { trimmedUsername, trimmedPassword });
-            console.log('Available users:', mockUsers);
-
-            const user = mockUsers.find(
-                u => u.username === trimmedUsername && u.password === trimmedPassword
-            );
-
-            console.log('Found user:', user);
-
-            if (!user) {
-                throw new Error('Invalid username or password');
+            if (signInError) {
+                throw new Error(signInError.message || 'Invalid email or password');
             }
-
-            // Simulate API delay
-            await new Promise(resolve => setTimeout(resolve, 500));
-
-            // Mock token
-            const token = 'mock-jwt-token-' + Date.now();
-
-            login({
-                id: user.id,
-                username: user.username,
-                role: user.role
-            }, token);
 
             router.push('/');
         } catch (err: any) {
@@ -74,62 +49,16 @@ export default function Login() {
                         </div>
                     )}
 
-                    <div style={{
-                        background: 'rgba(100, 108, 255, 0.1)',
-                        padding: '1rem',
-                        borderRadius: '8px',
-                        marginBottom: '1rem',
-                        fontSize: '0.85rem',
-                        border: '1px solid rgba(100, 108, 255, 0.2)'
-                    }}>
-                        <strong>Demo Credentials:</strong><br/>
-                        <div style={{ marginTop: '0.5rem', display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                            <button
-                                type="button"
-                                onClick={() => { setUsername('applicant'); setPassword('password123'); }}
-                                style={{
-                                    padding: '0.3rem 0.8rem',
-                                    background: 'rgba(100, 108, 255, 0.2)',
-                                    border: '1px solid rgba(100, 108, 255, 0.3)',
-                                    borderRadius: '6px',
-                                    color: '#fff',
-                                    fontSize: '0.8rem',
-                                    cursor: 'pointer'
-                                }}
-                            >
-                                Use Applicant
-                            </button>
-                            <button
-                                type="button"
-                                onClick={() => { setUsername('recruiter'); setPassword('password123'); }}
-                                style={{
-                                    padding: '0.3rem 0.8rem',
-                                    background: 'rgba(100, 108, 255, 0.2)',
-                                    border: '1px solid rgba(100, 108, 255, 0.3)',
-                                    borderRadius: '6px',
-                                    color: '#fff',
-                                    fontSize: '0.8rem',
-                                    cursor: 'pointer'
-                                }}
-                            >
-                                Use Recruiter
-                            </button>
-                        </div>
-                        <div style={{ marginTop: '0.5rem', fontSize: '0.75rem', opacity: 0.8 }}>
-                            Or manually enter - Applicant: <code>applicant</code> / <code>password123</code>
-                        </div>
-                    </div>
-
                     <form onSubmit={handleSubmit} className="auth-form">
                         <div className="form-group">
-                            <label>Username</label>
+                            <label>Email</label>
                             <input
-                                type="text"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                                 required
                                 className="form-input"
-                                placeholder="Enter your username"
+                                placeholder="Enter your email"
                             />
                         </div>
                         <div className="form-group">

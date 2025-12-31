@@ -115,16 +115,17 @@
 
 .section-header h2 {
     font-size: 1.5rem;
-    color: var(--text-primary);
+    color: #ffffff;
 }
 
 .count-badge {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(100, 108, 255, 0.2);
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--text-secondary);
+    font-weight: 600;
+    color: #a5b4fc;
+    border: 1px solid rgba(100, 108, 255, 0.3);
 }
 
 .profiles-grid {
@@ -136,10 +137,10 @@
 .empty-state {
     text-align: center;
     padding: 80px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px dashed rgba(255, 255, 255, 0.1);
+    background: rgba(30, 30, 30, 0.4);
+    border: 1px dashed rgba(255, 255, 255, 0.15);
     border-radius: 12px;
-    color: var(--text-secondary);
+    color: #a1a1aa;
 }
 
 .nav-link {

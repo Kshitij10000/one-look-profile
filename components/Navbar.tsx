@@ -10,7 +10,7 @@ interface NavbarProps {
 }
 
 export default function Navbar({ searchQuery, onSearchChange }: NavbarProps) {
-    const { user, logout } = useAuth();
+    const { user, signOut } = useAuth();
     const router = useRouter();
     const pathname = usePathname();
 
@@ -49,7 +49,7 @@ export default function Navbar({ searchQuery, onSearchChange }: NavbarProps) {
                                 <span>✎</span> Edit
                             </button>
                         )}
-                        <button className="btn-logout" onClick={() => { logout(); router.push('/login'); }}>
+                        <button className="btn-logout" onClick={async () => { await signOut(); router.push('/login'); }}>
                             Logout
                         </button>
                     </div>
