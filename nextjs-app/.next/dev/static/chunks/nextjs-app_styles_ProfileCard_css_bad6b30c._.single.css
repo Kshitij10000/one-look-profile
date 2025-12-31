@@ -1,0 +1,119 @@
+/* [project]/nextjs-app/styles/ProfileCard.css [app-client] (css) */
+.profile-card {
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  background: #fff;
+  border-radius: 12px;
+  flex-direction: column;
+  height: 100%;
+  padding: 24px;
+  transition: all .2s;
+  display: flex;
+  box-shadow: 0 2px 8px #0000000f;
+}
+
+.profile-card:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px #0000001a;
+}
+
+.card-header {
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.card-avatar {
+  color: #fff;
+  background: linear-gradient(135deg, #007aff, #00c6ff);
+  border-radius: 50%;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: flex;
+}
+
+.card-identity {
+  min-width: 0;
+}
+
+.card-name {
+  color: var(--text-primary);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-bottom: 4px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.card-title {
+  color: var(--text-secondary);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: .9rem;
+  overflow: hidden;
+}
+
+.card-body {
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.card-summary {
+  color: #555;
+  margin-bottom: 16px;
+  font-size: .9rem;
+  line-height: 1.5;
+}
+
+.card-skills {
+  flex-wrap: wrap;
+  gap: 6px;
+  display: flex;
+}
+
+.card-skill-tag {
+  color: #444;
+  background: #f0f0f5;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: .75rem;
+  font-weight: 500;
+}
+
+.card-more-tag {
+  color: #888;
+  padding: 4px;
+  font-size: .75rem;
+}
+
+.card-footer {
+  margin-top: auto;
+}
+
+.view-profile-btn {
+  border: 1px solid var(--border-color);
+  width: 100%;
+  color: var(--text-primary);
+  background: #fff;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: .9rem;
+  font-weight: 500;
+  transition: all .2s;
+}
+
+.profile-card:hover .view-profile-btn {
+  background: var(--accent-color);
+  color: #fff;
+  border-color: var(--accent-color);
+}
+
+/*# sourceMappingURL=nextjs-app_styles_ProfileCard_css_bad6b30c._.single.css.map*/

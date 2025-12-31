@@ -1,0 +1,1268 @@
+/* [project]/nextjs-app/styles/index.css [app-client] (css) */
+:root {
+  --bg-app: #f5f5f7;
+  --bg-panel: #fff;
+  --text-primary: #1d1d1f;
+  --text-secondary: #86868b;
+  --accent-color: #007aff;
+  --border-color: #d2d2d7;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --shadow-sm: 0 1px 2px #0000000d;
+  --shadow-md: 0 4px 6px -1px #0000001a, 0 2px 4px -1px #0000000f;
+  --shadow-lg: 0 10px 15px -3px #0000001a, 0 4px 6px -2px #0000000d;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 600;
+}
+
+p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* [project]/nextjs-app/styles/App.css [app-client] (css) */
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #121212;
+  --bg-card: #1e1e1e;
+  --primary-color: #646cff;
+  --primary-color-rgb: 100, 108, 255;
+  --text-primary: #fff;
+  --text-secondary: #a1a1aa;
+  --font-main: "Inter", system-ui, -apple-system, sans-serif;
+  --accent-color: #00e5ff;
+}
+
+.light-mode-forced {
+  color: #333 !important;
+  background-color: #f8f9fa !important;
+}
+
+.light-mode-forced input, .light-mode-forced textarea {
+  color: #333 !important;
+  background: #fff !important;
+  border: 1px solid #ddd !important;
+}
+
+.light-mode-forced label, .light-mode-forced h2, .light-mode-forced h3 {
+  color: #111 !important;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root {
+  flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+}
+
+.app-shell {
+  flex-direction: column;
+  height: 100vh;
+  display: flex;
+}
+
+.glass-panel {
+  -webkit-backdrop-filter: blur(12px);
+  background: #1e1e1e99;
+  border: 1px solid #ffffff14;
+  box-shadow: 0 4px 6px #0000001a;
+}
+
+.top-bar {
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 1000;
+  background: #0d1930d9;
+  border-bottom: 1px solid #ffffff0d;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  transition: all .3s;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.blue-nav {
+  background: #646cff26 !important;
+  border-bottom: 1px solid #646cff4d !important;
+}
+
+.main-layout {
+  flex-direction: column;
+  flex: 1;
+  margin-top: 80px;
+  display: flex;
+}
+
+.logo {
+  letter-spacing: -.5px;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+  background: linear-gradient(135deg, #fff 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  align-items: center;
+  gap: .5rem;
+  font-size: 1.6rem;
+  font-weight: 800;
+  display: flex;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  font-weight: 600;
+  transition: all .3s cubic-bezier(.4, 0, .2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: #fff;
+  border-radius: 12px;
+  padding: .75rem 1.5rem;
+  box-shadow: 0 4px 12px #646cff4d;
+}
+
+.btn-primary:hover {
+  background: #535bf2;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px #646cff66;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  color: var(--text-primary);
+  background: #ffffff0d;
+  border: 1px solid #ffffff1a;
+  border-radius: 12px;
+  padding: .75rem 1.5rem;
+}
+
+.btn-secondary:hover {
+  border-color: var(--text-primary);
+  background: #ffffff1a;
+  transform: translateY(-2px);
+}
+
+.btn-icon {
+  align-items: center;
+  gap: .5rem;
+  display: inline-flex;
+}
+
+.large {
+  border-radius: 99px;
+  padding: 1rem 2.5rem;
+  font-size: 1.15rem;
+}
+
+.user-profile-section {
+  background: #ffffff08;
+  border: 1px solid #ffffff0d;
+  border-radius: 100px;
+  align-items: center;
+  gap: 16px;
+  padding: 6px 16px;
+  display: flex;
+}
+
+.user-name {
+  color: #fff;
+  letter-spacing: .3px;
+  font-size: .95rem;
+  font-weight: 700;
+}
+
+.user-role {
+  color: var(--text-secondary);
+  background: #ffffff1a;
+  border-radius: 6px;
+  margin-left: 8px;
+  padding: 2px 8px;
+  font-size: .8rem;
+  font-weight: 500;
+}
+
+.btn-logout {
+  color: #fff;
+  background: #dc2626e6;
+  border: 1px solid #ffffff1a;
+  border-radius: 10px;
+  padding: .6rem 1.2rem;
+  font-size: .9rem;
+  box-shadow: 0 4px 12px #dc262640;
+}
+
+.btn-logout:hover {
+  background: #ef4444;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px #ef444459;
+}
+
+.editor-pane {
+  background: var(--bg-secondary);
+  border-right: 1px solid #ffffff0d;
+  flex-shrink: 0;
+  width: 400px;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.preview-pane {
+  background: var(--bg-primary);
+  perspective: 1000px;
+  flex: 1;
+  justify-content: center;
+  padding: 2rem;
+  display: flex;
+  overflow-y: auto;
+}
+
+.split-view {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.search-wrapper {
+  flex: 1;
+  max-width: 520px;
+  margin-left: 1.5rem;
+}
+
+.search-input {
+  width: 100%;
+  color: var(--text-primary);
+  background: #ffffff05;
+  border: 1px solid #ffffff0f;
+  border-radius: 999px;
+  padding: .6rem 1rem;
+  font-size: .95rem;
+}
+
+.search-input::placeholder {
+  color: #ffffff73;
+}
+
+.nav-link {
+  cursor: pointer;
+  color: var(--text-primary);
+  font-size: .95rem;
+  transition: color .2s;
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+}
+
+/* [project]/nextjs-app/styles/Auth.css [app-client] (css) */
+.auth-wrapper {
+  background: radial-gradient(circle at 0 0, #1a1a1a, #000);
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+}
+
+.auth-card {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background: #ffffff08;
+  border: 1px solid #ffffff1a;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 420px;
+  padding: 3rem;
+  animation: .6s cubic-bezier(.16, 1, .3, 1) slideUp;
+  box-shadow: 0 20px 40px #0006;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.auth-header h2 {
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(135deg, #fff 0%, #a5a5a5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  margin-bottom: .5rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.auth-header p {
+  color: var(--text-secondary);
+  font-size: .95rem;
+}
+
+.auth-form {
+  flex-direction: column;
+  gap: 1.25rem;
+  display: flex;
+}
+
+.form-group {
+  flex-direction: column;
+  gap: .5rem;
+  display: flex;
+}
+
+.form-group label {
+  color: var(--text-secondary);
+  margin-left: 4px;
+  font-size: .85rem;
+  font-weight: 500;
+}
+
+.form-input {
+  color: #fff;
+  background: #0003;
+  border: 1px solid #ffffff1a;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 1rem;
+  transition: all .2s;
+}
+
+.form-input:focus {
+  background: #646cff0d;
+  border-color: #646cff;
+  outline: none;
+  box-shadow: 0 0 0 4px #646cff1a;
+}
+
+.btn-auth {
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(135deg, #646cff 0%, #535bf2 100%);
+  border: none;
+  border-radius: 12px;
+  margin-top: 1rem;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: transform .1s, box-shadow .2s;
+}
+
+.btn-auth:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px #646cff4d;
+}
+
+.btn-auth:active {
+  transform: translateY(0);
+}
+
+.auth-footer {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-top: 2rem;
+  font-size: .9rem;
+}
+
+.auth-link {
+  color: #646cff;
+  margin-left: 5px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.auth-link:hover {
+  color: #535bf2;
+  text-decoration: underline;
+}
+
+.error-message {
+  color: #ff4646;
+  background: #ff46461a;
+  border: 1px solid #ff464633;
+  border-radius: 8px;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1rem;
+  padding: 12px;
+  font-size: .9rem;
+  display: flex;
+}
+
+/* [project]/nextjs-app/styles/Editor.css [app-client] (css) */
+.editor-container h2 {
+  margin-bottom: var(--space-lg);
+  font-size: 1.5rem;
+}
+
+.form-section {
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.form-section:last-child {
+  border-bottom: none;
+}
+
+.form-section h3 {
+  margin-bottom: var(--space-md);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  font-size: 1.1rem;
+}
+
+label {
+  margin-bottom: var(--space-xs);
+  font-size: .85rem;
+  font-weight: 500;
+  display: block;
+}
+
+input, textarea {
+  width: 100%;
+  margin-bottom: var(--space-md);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 10px;
+  font-family: inherit;
+  font-size: .95rem;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--accent-color);
+  outline: none;
+  box-shadow: 0 0 0 2px #007aff1a;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.grid-2 {
+  gap: var(--space-md);
+  grid-template-columns: 1fr 1fr;
+  display: grid;
+}
+
+.card-item {
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  border: 1px solid var(--border-color);
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.card-item input, .card-item textarea {
+  margin-bottom: var(--space-sm);
+  background: #fff;
+}
+
+.card-item input:last-child, .card-item textarea:last-child {
+  margin-bottom: 0;
+}
+
+.editor-header {
+  margin-bottom: var(--space-lg);
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.editor-header h2 {
+  margin-bottom: 0;
+}
+
+.publish-btn {
+  color: #fff;
+  background: #34c759;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: .9rem;
+  font-weight: 600;
+  transition: background .2s;
+}
+
+.publish-btn:hover {
+  background: #248a3d;
+}
+
+/* [project]/nextjs-app/styles/Home.css [app-client] (css) */
+.home-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.landing-container {
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - 70px);
+  padding-bottom: 50px;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.landing-hero {
+  text-align: center;
+  z-index: 10;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 4rem;
+  position: relative;
+}
+
+.hero-title {
+  letter-spacing: -.02em;
+  margin-bottom: 1.5rem;
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.gradient-text {
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(135deg, #fff 0%, #646cff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  justify-content: center;
+  gap: 1rem;
+  display: flex;
+}
+
+.glow-effect {
+  filter: blur(60px);
+  z-index: -1;
+  opacity: .5;
+  background: radial-gradient(circle, #646cff66 0%, #0000 70%);
+  width: 300px;
+  height: 300px;
+  position: absolute;
+}
+
+.top-left {
+  top: -100px;
+  left: -100px;
+}
+
+.bottom-right {
+  bottom: -50px;
+  right: -50px;
+}
+
+.scrollers-section {
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  display: flex;
+}
+
+.discovery-section {
+  padding: 40px 0 80px;
+  animation: .5s ease-in-out fadeIn;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-header {
+  border-bottom: 1px solid #ffffff1a;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  display: flex;
+}
+
+.section-header h2 {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+}
+
+.count-badge {
+  color: var(--text-secondary);
+  background: #ffffff1a;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: .85rem;
+  font-weight: 500;
+}
+
+.profiles-grid {
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  display: grid;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-secondary);
+  background: #ffffff05;
+  border: 1px dashed #ffffff1a;
+  border-radius: 12px;
+  padding: 80px;
+}
+
+.nav-link {
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: .95rem;
+  transition: color .2s;
+}
+
+.nav-link:hover {
+  color: #fff;
+}
+
+.blue-nav {
+  background-color: #007bff !important;
+}
+
+.blue-nav .logo, .blue-nav .nav-link, .blue-nav .user-name {
+  color: #fff !important;
+}
+
+.blue-nav .btn-logout {
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+/* [project]/nextjs-app/styles/InfiniteScroller.css [app-client] (css) */
+.scroller-container {
+  width: 100%;
+  padding: 1rem 0;
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, #0000, #000 10% 90%, #0000);
+  mask-image: linear-gradient(to right, #0000, #000 10% 90%, #0000);
+}
+
+.scroller-inner {
+  width: max-content;
+  animation: scroll var(--speed) linear infinite;
+  flex-wrap: nowrap;
+  display: flex;
+}
+
+.scroller-inner.right {
+  animation-direction: reverse;
+}
+
+.scroller-content {
+  gap: 2rem;
+  padding-right: 2rem;
+  display: flex;
+}
+
+.scroller-item {
+  color: var(--text-secondary);
+  white-space: nowrap;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  background: #ffffff0d;
+  border: 1px solid #ffffff1a;
+  border-radius: 999px;
+  padding: .75rem 1.5rem;
+  font-size: .9rem;
+  font-weight: 500;
+  transition: all .3s;
+}
+
+.scroller-item:hover {
+  background: rgba(var(--primary-color-rgb), .2);
+  border-color: var(--primary-color);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(var(--primary-color-rgb), .3);
+  transform: translateY(-2px);
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 1rem));
+  }
+}
+
+/* [project]/nextjs-app/styles/Profile.css [app-client] (css) */
+.profile-dashboard {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+  animation: .6s cubic-bezier(.22, 1, .36, 1) fadeIn;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile-hero {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, #ffffff08 0%, #ffffff03 100%);
+  border: 1px solid #ffffff0d;
+  border-radius: 24px;
+  margin-bottom: 2rem;
+  padding: 3rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-backdrop {
+  filter: blur(40px);
+  z-index: 0;
+  background: radial-gradient(circle, #646cff26 0%, #0000 70%);
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: -50px;
+  right: -50px;
+}
+
+.hero-content {
+  z-index: 1;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+  display: flex;
+  position: relative;
+}
+
+.avatar-circle {
+  color: #fff;
+  background: linear-gradient(135deg, #646cff 0%, #a1a1aa 100%);
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  font-size: 3rem;
+  font-weight: 700;
+  display: flex;
+  box-shadow: 0 10px 30px #0000004d;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-name {
+  background: linear-gradient(to right, #fff, #bbb);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  margin-bottom: .5rem;
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.hero-title {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.hero-badges {
+  color: var(--text-secondary);
+  gap: 1rem;
+  font-size: .9rem;
+  display: flex;
+}
+
+.hero-actions {
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  display: flex;
+}
+
+.action-btn.primary {
+  color: #000;
+  background: #fff;
+  border-radius: 99px;
+  padding: .8rem 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform .2s;
+}
+
+.action-btn.primary:hover {
+  transform: scale(1.05);
+}
+
+.social-links {
+  gap: .8rem;
+  display: flex;
+}
+
+.social-icon {
+  color: #fff;
+  background: #ffffff0d;
+  border: 1px solid #ffffff1a;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  text-decoration: none;
+  transition: all .2s;
+  display: flex;
+}
+
+.social-icon:hover {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.profile-grid {
+  grid-template-columns: 350px 1fr;
+  gap: 2rem;
+  display: grid;
+}
+
+@media (max-width: 900px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid #ffffff0d;
+  border-radius: 16px;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+}
+
+.summary-card p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.card h3 {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff6;
+  margin-bottom: 1rem;
+  font-size: .9rem;
+}
+
+.skill-group {
+  margin-bottom: 1.5rem;
+}
+
+.skill-group h4 {
+  color: #ddd;
+  margin-bottom: .5rem;
+  font-size: .95rem;
+}
+
+.tags {
+  flex-wrap: wrap;
+  gap: .5rem;
+  display: flex;
+}
+
+.skill-tag {
+  color: #bbb;
+  background: #ffffff0d;
+  border-radius: 6px;
+  padding: .4rem .8rem;
+  font-size: .85rem;
+}
+
+.dashboard-section {
+  margin-bottom: 3rem;
+}
+
+.section-header-row {
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+}
+
+.section-header-row h3 {
+  color: #fff;
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.line-dec {
+  background: #ffffff1a;
+  flex: 1;
+  height: 1px;
+}
+
+.timeline-entry {
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  position: relative;
+}
+
+.entry-marker {
+  background: #ffffff1a;
+  flex-shrink: 0;
+  width: 2px;
+  margin-left: 8px;
+  position: relative;
+}
+
+.entry-marker:before {
+  content: "";
+  background: var(--primary-color);
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: 0;
+  left: -5px;
+  box-shadow: 0 0 10px #646cff80;
+}
+
+.entry-content {
+  background: var(--bg-card);
+  border: 1px solid #ffffff08;
+  border-radius: 12px;
+  flex: 1;
+  padding: 1.5rem;
+  transition: all .3s;
+}
+
+.card-hover:hover {
+  background: #ffffff08;
+  border-color: #ffffff1a;
+  transform: translateY(-3px);
+}
+
+.entry-header {
+  justify-content: space-between;
+  margin-bottom: .25rem;
+  display: flex;
+}
+
+.entry-role {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.entry-duration {
+  color: var(--text-secondary);
+  font-size: .9rem;
+}
+
+.entry-company {
+  color: var(--primary-color);
+  margin-bottom: .8rem;
+  font-size: .95rem;
+}
+
+.entry-desc {
+  color: var(--text-secondary);
+  font-size: .95rem;
+  line-height: 1.5;
+}
+
+.projects-grid-view {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  display: grid;
+}
+
+.project-box {
+  background: var(--bg-card);
+  border: 1px solid #ffffff08;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all .3s;
+}
+
+.project-top {
+  justify-content: space-between;
+  margin-bottom: .5rem;
+  display: flex;
+}
+
+.project-top h4 {
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.project-top a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.project-role-tag {
+  color: #888;
+  margin-bottom: 1rem;
+  font-size: .8rem;
+  font-style: italic;
+  display: inline-block;
+}
+
+.project-box p {
+  color: var(--text-secondary);
+  font-size: .9rem;
+  line-height: 1.5;
+}
+
+/* [project]/nextjs-app/styles/ProfileCard.css [app-client] (css) */
+.profile-card {
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  background: #fff;
+  border-radius: 12px;
+  flex-direction: column;
+  height: 100%;
+  padding: 24px;
+  transition: all .2s;
+  display: flex;
+  box-shadow: 0 2px 8px #0000000f;
+}
+
+.profile-card:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px #0000001a;
+}
+
+.card-header {
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.card-avatar {
+  color: #fff;
+  background: linear-gradient(135deg, #007aff, #00c6ff);
+  border-radius: 50%;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: flex;
+}
+
+.card-identity {
+  min-width: 0;
+}
+
+.card-name {
+  color: var(--text-primary);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-bottom: 4px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.card-title {
+  color: var(--text-secondary);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: .9rem;
+  overflow: hidden;
+}
+
+.card-body {
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.card-summary {
+  color: #555;
+  margin-bottom: 16px;
+  font-size: .9rem;
+  line-height: 1.5;
+}
+
+.card-skills {
+  flex-wrap: wrap;
+  gap: 6px;
+  display: flex;
+}
+
+.card-skill-tag {
+  color: #444;
+  background: #f0f0f5;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: .75rem;
+  font-weight: 500;
+}
+
+.card-more-tag {
+  color: #888;
+  padding: 4px;
+  font-size: .75rem;
+}
+
+.card-footer {
+  margin-top: auto;
+}
+
+.view-profile-btn {
+  border: 1px solid var(--border-color);
+  width: 100%;
+  color: var(--text-primary);
+  background: #fff;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: .9rem;
+  font-weight: 500;
+  transition: all .2s;
+}
+
+.profile-card:hover .view-profile-btn {
+  background: var(--accent-color);
+  color: #fff;
+  border-color: var(--accent-color);
+}
+
+/* [project]/nextjs-app/app/globals.css [app-client] (css) */
+:root {
+  --background: #fff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    --lightningcss-light: ;
+    --lightningcss-dark: initial;
+    color-scheme: dark;
+  }
+}
+
+/*# sourceMappingURL=nextjs-app_1799b92e._.css.map*/
