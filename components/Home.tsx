@@ -3,7 +3,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
-import LandingPage from './LandingPage';
+import NewLandingPage from './NewLandingPage';
 import ProfileCard from './ProfileCard';
 
 interface HomeProps {
@@ -15,7 +15,7 @@ export default function Home({ profiles }: HomeProps) {
     const { user } = useAuth();
 
     if (!user) {
-        return <LandingPage />;
+        return <NewLandingPage />;
     }
 
     return (

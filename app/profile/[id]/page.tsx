@@ -8,9 +8,9 @@ import { mockProfiles } from '@/lib/mockData';
 
 export default function ProfilePage() {
     const params = useParams();
-    const id = params.id as string;
+    const id = params?.id as string;
 
-    const profile = mockProfiles.find(p => p.id == parseInt(id));
+    const profile = id ? mockProfiles.find(p => p.id == parseInt(id)) : null;
 
     if (!profile) {
         return (

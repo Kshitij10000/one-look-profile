@@ -24,7 +24,7 @@ export default function Navbar({ searchQuery, onSearchChange }: NavbarProps) {
     return (
         <nav className={`top-bar ${pathname === '/create' ? 'blue-nav' : ''}`}>
             <div className="logo" onClick={() => router.push('/')}>
-                <span style={{ fontSize: '1.8rem' }}>✨</span> One-Look Profile
+                <span style={{ fontSize: '1.8rem' }}>✨</span> OpenPages
             </div>
             {user && pathname !== '/login' && pathname !== '/register' && (
                 <div className="search-wrapper">

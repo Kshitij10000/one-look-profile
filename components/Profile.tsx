@@ -32,11 +32,13 @@ export default function Profile({ profile }: ProfileProps) {
                             Contact Me
                         </a>
                         <div className="social-links">
-                            {Object.entries(personalInfo.socials).map(([key, val]) => (
-                                val && <a key={key} href={`https://${val}`} target="_blank" rel="noreferrer" className="social-icon" title={key}>
-                                    {key.charAt(0).toUpperCase()}
-                                </a>
-                            ))}
+                            {Object.entries(personalInfo.socials)
+                                .filter(([_, val]) => val)
+                                .map(([key, val]) => (
+                                    <a key={key} href={`https://${val}`} target="_blank" rel="noreferrer" className="social-icon" title={key}>
+                                        {key.charAt(0).toUpperCase()}
+                                    </a>
+                                ))}
                         </div>
                     </div>
                 </div>

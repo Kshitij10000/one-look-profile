@@ -11,7 +11,7 @@ import "@/styles/ProfileCard.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "One-Look Profile",
+  title: "OpenPages",
   description: "The modern way to showcase talent",
 };
 
