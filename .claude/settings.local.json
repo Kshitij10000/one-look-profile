@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app:*)",
+      "Bash(dir:*)",
+      "Bash(npm run dev:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill:*)",
+      "Bash(npm install:*)",
+      "Bash(mkdir:*)",
+      "Bash(ls:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(test:*)"
+    ]
+  }
+}
