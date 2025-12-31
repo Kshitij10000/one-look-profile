@@ -141,3 +141,30 @@
     border-radius: 12px;
     color: var(--text-secondary);
 }
+
+.nav-link {
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.nav-link:hover {
+    color: #fff;
+}
+
+.blue-nav {
+    background-color: #007bff !important;
+    /* Adjust blue shade as needed */
+}
+
+.blue-nav .logo,
+.blue-nav .nav-link,
+.blue-nav .user-name {
+    color: white !important;
+}
+
+.blue-nav .btn-logout {
+    border-color: white !important;
+    color: white !important;
+}

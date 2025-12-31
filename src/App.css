@@ -8,6 +8,27 @@
     --text-secondary: #a1a1aa;
 
     --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+    --accent-color: #00e5ff;
+    /* Bright Cyan for high contrast on dark navbar */
+}
+
+/* Force Light Mode for Editor Pane overrides */
+.light-mode-forced {
+    background-color: #f8f9fa !important;
+    color: #333 !important;
+}
+
+.light-mode-forced input,
+.light-mode-forced textarea {
+    background: #fff !important;
+    color: #333 !important;
+    border: 1px solid #ddd !important;
+}
+
+.light-mode-forced label,
+.light-mode-forced h2,
+.light-mode-forced h3 {
+    color: #111 !important;
 }
 
 * {
@@ -210,3 +231,21 @@ button {
     width: 100%;
     height: 100%;
 }
+
+.search-wrapper {
+    margin-left: 1.5rem;
+    flex: 1;
+    max-width: 520px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.02);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.search-input::placeholder { color: rgba(255,255,255,0.45); }

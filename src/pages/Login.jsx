@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import '../styles/Auth.css';
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     const { login } = useAuth();
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError('');
+        setIsLoading(true);
+
         try {
             const response = await fetch('http://localhost:3000/api/auth/login', {
                 method: 'POST',
@@ -28,39 +33,58 @@ const Login = () => {
             navigate('/');
         } catch (err) {
             setError(err.message);
+        } finally {
+            setIsLoading(false);
         }
     };
 
     return (
-        <div className="auth-container" style={{ maxWidth: 400, margin: '50px auto', padding: 20 }}>
-            <h2>Login</h2>
-            {error && <div style={{ color: 'red', marginBottom: 10 }}>{error}</div>}
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 15 }}>
-                <div>
-                    <label>Username</label>
-                    <input
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        required
-                        style={{ width: '100%', padding: 8, marginTop: 5 }}
-                    />
+        <div className="auth-wrapper">
+            <div className="auth-card">
+                <div className="auth-header">
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to continue to One-Look Profile</p>
                 </div>
-                <div>
-                    <label>Password</label>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                        style={{ width: '100%', padding: 8, marginTop: 5 }}
-                    />
+
+                {error && (
+                    <div className="error-message">
+                        ⚠️ {error}
+                    </div>
+                )}
+
+                <form onSubmit={handleSubmit} className="auth-form">
+                    <div className="form-group">
+                        <label>Username</label>
+                        <input
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
+                            className="form-input"
+                            placeholder="Enter your username"
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Password</label>
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            className="form-input"
+                            placeholder="Enter your password"
+                        />
+                    </div>
+                    <button type="submit" className="btn-auth" disabled={isLoading}>
+                        {isLoading ? 'Signing in...' : 'Sign In'}
+                    </button>
+                </form>
+
+                <div className="auth-footer">
+                    Don't have an account?
+                    <Link to="/register" className="auth-link">Get Started</Link>
                 </div>
-                <button type="submit" style={{ padding: 10, cursor: 'pointer' }}>Login</button>
-            </form>
-            <p style={{ marginTop: 15 }}>
-                Don't have an account? <Link to="/register">Register here</Link>
-            </p>
+            </div>
         </div>
     );
 };

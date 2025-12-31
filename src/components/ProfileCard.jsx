@@ -3,17 +3,20 @@ import '../styles/ProfileCard.css';
 
 export default function ProfileCard({ profile, onClick }) {
     const { personalInfo, skills } = profile;
-    const topSkills = skills.flatMap(cat => cat.items).slice(0, 3);
+    const topSkills = (skills || []).flatMap(cat => cat.items || []).slice(0, 3);
+    const initials = personalInfo && personalInfo.fullName ?
+        personalInfo.fullName.split(' ').map(n => n?.[0] || '').slice(0, 2).join('').toUpperCase()
+        : 'U';
 
     return (
         <div className="profile-card" onClick={onClick}>
             <div className="card-header">
-                <div className="card-avatar">
-                    {personalInfo.fullName.charAt(0)}
+                <div className="card-avatar" aria-hidden>
+                    {initials}
                 </div>
                 <div className="card-identity">
-                    <h3 className="card-name">{personalInfo.fullName}</h3>
-                    <p className="card-title">{personalInfo.title}</p>
+                    <h3 className="card-name">{personalInfo?.fullName || 'Unnamed'}</h3>
+                    <p className="card-title">{personalInfo?.title || '—'}</p>
                 </div>
             </div>
 

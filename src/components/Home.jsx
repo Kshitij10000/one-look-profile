@@ -29,7 +29,7 @@ export default function Home({ profiles }) {
                             onClick={() => navigate('/create')}
                             style={{ marginTop: '1rem' }}
                         >
-                            Create Proflie
+                            Create Profile
                         </button>
                     </div>
                 ) : (

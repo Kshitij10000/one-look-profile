@@ -5,15 +5,26 @@ import Profile from './components/Profile'
 import Home from './components/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import Help from './pages/Help'
+import Contact from './pages/Contact'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import { defaultProfile } from './data/schema'
 import './App.css'
 
 function AppContent() {
     const [profiles, setProfiles] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
     const [currentProfile, setCurrentProfile] = useState(defaultProfile);
     const { user, logout } = useAuth();
     const navigate = useNavigate();
+    const location = useLocation();
+
+    // Clear search when user logs out or when on login/register pages
+    useEffect(() => {
+        if (!user || location.pathname === '/login' || location.pathname === '/register') {
+            setSearchQuery('');
+        }
+    }, [user, location.pathname]);
 
     // Fetch profiles from backend
     useEffect(() => {
@@ -59,16 +70,26 @@ function AppContent() {
 
     return (
         <div className="app-shell">
-            <nav className="top-bar">
+            <nav className={`top-bar ${location.pathname === '/create' ? 'blue-nav' : ''}`}>
                 <div className="logo" onClick={() => navigate('/')}>
                     <span style={{ fontSize: '1.8rem' }}>✨</span> One-Look Profile
                 </div>
+                {user && location.pathname !== '/login' && location.pathname !== '/register' && (
+                    <div className="search-wrapper">
+                        <input
+                            className="search-input"
+                            placeholder="Search profiles, titles, skills..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
+                    </div>
+                )}
                 <div className="controls">
                     {user ? (
                         <div className="user-profile-section">
-                            <span className="user-name">
+                            <span className="user-name" style={{ color: useLocation().pathname === '/create' ? '#fff' : 'var(--accent-color)', fontWeight: 'bold' }}>
                                 {user.username}
-                                <span className="user-role">{user.role}</span>
+                                {!useLocation().pathname === '/create' && <span className="user-role">{user.role}</span>}
                             </span>
 
                             {user.role === 'applicant' && (
@@ -81,9 +102,9 @@ function AppContent() {
                             </button>
                         </div>
                     ) : (
-                        <div style={{ display: 'flex', gap: 12 }}>
-                            <button className="btn-secondary" onClick={() => navigate('/login')}>Login</button>
-                            <button className="btn-primary" onClick={() => navigate('/register')}>Get Started</button>
+                        <div style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
+                            <span className="nav-link" onClick={() => navigate('/help')}>Help</span>
+                            <span className="nav-link" onClick={() => navigate('/contact')}>Contact Us</span>
                         </div>
                     )}
                 </div>
@@ -91,14 +112,23 @@ function AppContent() {
 
             <div className="main-layout">
                 <Routes>
-                    <Route path="/" element={<Home profiles={profiles} />} />
+                    <Route path="/" element={<Home profiles={profiles.filter(p => {
+                        const q = searchQuery.trim().toLowerCase();
+                        if (!q) return true;
+                        const name = p.personalInfo?.fullName?.toLowerCase() || '';
+                        const title = p.personalInfo?.title?.toLowerCase() || '';
+                        const skillsText = (p.skills || []).flatMap(cat => cat.items || []).join(' ').toLowerCase();
+                        return name.includes(q) || title.includes(q) || skillsText.includes(q);
+                    })} />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/help" element={<Help />} />
+                    <Route path="/contact" element={<Contact />} />
 
                     <Route path="/create" element={
                         user && user.role === 'applicant' ? (
                             <div className="split-view" style={{ display: 'flex', width: '100%', height: '100%' }}>
-                                <div className="editor-pane">
+                                <div className="editor-pane light-mode-forced">
                                     <Editor
                                         profile={currentProfile}
                                         onUpdate={setCurrentProfile}
